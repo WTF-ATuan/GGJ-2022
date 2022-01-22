@@ -16,8 +16,19 @@ namespace Actor
         private float _moveSpeed;
         private Rigidbody _rigidbody;
         private MagneticPole _currentMagneticPole;
+        private int health
+        {
+            get
+            {
+                int n = 0;
+                foreach(HealthObject i in healthObjects)
+                {
+                    if (i.Open) n++;
+                }
+                return n;
+            }
+        }
         private int _health;
-
 
         public readonly DomainEvent actorDead = new DomainEvent();
 
@@ -26,8 +37,21 @@ namespace Actor
             _rigidbody = GetComponent<Rigidbody>();
             _moveSpeed = defaultMoveSpeed;
             _currentMagneticPole = defaultMagneticPole;
-            _health = defaultHealth;
+            //_health = defaultHealth;
             SwitchMagneticPole();
+        }
+
+        private void Update()
+        {
+            if(_health != health)
+            {
+                _health = health;
+                if(_health <= 0)
+                {
+                    Debug.Log("Actor Die");
+                    actorDead.InvokeEvent();
+                }
+            }
         }
 
         public void Move(float horizontal)
@@ -66,18 +90,18 @@ namespace Actor
             return !isSame;
         }
 
-        public void Beaten()
-        {
-            _health -= 1;
-            foreach (var healthObject in healthObjects.Where(healthObject => healthObject != null))
-            {
-                healthObject.gameObject.SetActive(false);
-            }
+        //public void Beaten()
+        //{
+        //    //_health -= 1;
+        //    foreach (var healthObject in healthObjects.Where(healthObject => healthObject != null))
+        //    {
+        //        healthObject.gameObject.SetActive(false);
+        //    }
 
-            if (_health > 0) return;
-            Debug.Log("Actor Die");
-            actorDead.InvokeEvent();
-        }
+        //    if (health > 0) return;
+        //    Debug.Log("Actor Die");
+        //    actorDead.InvokeEvent();
+        //}
 
         /// <summary>
         /// 取得一個生命物件（能選擇是活的還死的）

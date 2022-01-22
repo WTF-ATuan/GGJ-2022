@@ -21,7 +21,7 @@ namespace Actor
             var canBeatenActor = _actor.CanBeaten(enemyPole);
             if (canBeatenActor)
             {
-                _actor.Beaten();
+                //_actor.Beaten();
             }
             else
             {

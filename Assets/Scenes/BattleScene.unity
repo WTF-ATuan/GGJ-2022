@@ -1570,7 +1570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Index: 2
-  Open: 1
+  _Open: 1
 --- !u!1 &1683286341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,7 +1937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Index: 1
-  Open: 1
+  _Open: 1
 --- !u!1 &2012632629
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,4 +2034,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Index: 0
-  Open: 1
+  _Open: 1
