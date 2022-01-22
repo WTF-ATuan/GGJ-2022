@@ -11,11 +11,13 @@ namespace Rule
         public void FailGame()
         {
             failGameViewEvent?.Invoke();
+            Time.timeScale = 0;
         }
 
         public void PassGame()
         {
             passGameViewEvent?.Invoke();
+            Time.timeScale = 0;
         }
     }
 }
