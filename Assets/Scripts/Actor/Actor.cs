@@ -14,7 +14,7 @@ namespace Actor
         [SerializeField] private List<GameObject> healthObjects;
 
         private float _moveSpeed;
-        private Rigidbody2D _rigidbody2D;
+        private Rigidbody _rigidbody;
         private MagneticPole _currentMagneticPole;
         private int _health;
 
@@ -23,7 +23,7 @@ namespace Actor
 
         private void Start()
         {
-            _rigidbody2D = GetComponent<Rigidbody2D>();
+            _rigidbody = GetComponent<Rigidbody>();
             _moveSpeed = defaultMoveSpeed;
             _currentMagneticPole = defaultMagneticPole;
             _health = defaultHealth;
@@ -32,10 +32,10 @@ namespace Actor
 
         public void Move(float horizontal)
         {
-            var currentVelocity = _rigidbody2D.velocity;
+            var currentVelocity = _rigidbody.velocity;
             var movementOffsetX = horizontal * _moveSpeed;
             var nextVelocity = new Vector2(movementOffsetX, currentVelocity.y);
-            _rigidbody2D.velocity = nextVelocity;
+            _rigidbody.velocity = nextVelocity;
         }
 
         public void ModifyMoveSpeed(float amount)
