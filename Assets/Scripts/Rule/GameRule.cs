@@ -8,6 +8,11 @@ namespace Rule
         [SerializeField] private UnityEvent failGameViewEvent;
         [SerializeField] private UnityEvent passGameViewEvent;
 
+        private void Start()
+        {
+            Time.timeScale = 1;
+        }
+
         public void FailGame()
         {
             failGameViewEvent?.Invoke();
