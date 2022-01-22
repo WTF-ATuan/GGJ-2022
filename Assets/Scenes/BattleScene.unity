@@ -1602,11 +1602,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 4401286760911670589, guid: 3bb58448cc7f1bf47a5146343531076e, type: 3}
+  AddHPPrefab: {fileID: 2041578146976453660, guid: caf468fd751fc4967b9b3bc1b3326730, type: 3}
   actor: {fileID: 1605648}
-  countDownMax: 1
+  countDownMax: 2
   MaxX: 20
   MinMove: 2
   MaxMove: 10
+  AddHPIndex: 5
 --- !u!4 &1683286343
 Transform:
   m_ObjectHideFlags: 0

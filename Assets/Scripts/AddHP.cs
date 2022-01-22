@@ -1,11 +1,11 @@
 using System;
-using Extra;
-using Magnet;
-using UnityEngine;
-using DG.Tweening;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Magnet;
+using DG.Tweening;
 
-public class Enemy : MonoBehaviour
+public class AddHP : MonoBehaviour
 {
     public MagneticPole magneticPole
     {
@@ -13,22 +13,16 @@ public class Enemy : MonoBehaviour
         set
         {
             var spriteRender = GetComponent<SpriteRenderer>();
+            print(spriteRender != null);
             spriteRender.color = value == MagneticPole.North ? Color.red : Color.blue;
             _magneticPole = value;
         }
     }
     public MagneticPole _magneticPole;
 
-    public Vector3 StartPosition { get; private set; }
-
-    const float MoveTime = 4;
+    const float MoveTime = 8;
 
     public Action End_Act;
-
-    public void Start()
-    {
-        StartPosition = transform.position;
-    }
 
     /// <summary>
     /// 移動到某個終點（Index=終點編號 EndV3=終點座標）
@@ -39,6 +33,17 @@ public class Enemy : MonoBehaviour
 
         IEnumerator _()
         {
+            //  寫錯了這是給反擊用的移動
+            //Vector3 StartV3 = transform.position;
+            //float f = 0;
+            //f += 1f / MoveTime * Time.deltaTime;
+            //for(; ; )
+            //{
+            //    Vector3.Lerp(StartV3, EndObj.position, f);
+            //    if (f >= 1) break;
+            //    yield return null;
+            //}
+
             if (Index == 0)
             {
                 transform.DOMoveZ(EndV3.z, MoveTime);

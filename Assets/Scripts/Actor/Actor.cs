@@ -9,14 +9,14 @@ namespace Actor
     public class Actor : MonoBehaviour
     {
         [SerializeField] private float defaultMoveSpeed = 5;
-        [SerializeField] private MagneticPole defaultMagneticPole = MagneticPole.North;
+        [SerializeField] public MagneticPole defaultMagneticPole = MagneticPole.North;
         [SerializeField] private int defaultHealth = 3;
-        [SerializeField] private List<HealthObject> healthObjects;
+        public List<HealthObject> healthObjects;
 
         private float _moveSpeed;
         private Rigidbody _rigidbody;
-        private MagneticPole _currentMagneticPole;
-        private int health
+        public MagneticPole _currentMagneticPole;
+        public int health
         {
             get
             {

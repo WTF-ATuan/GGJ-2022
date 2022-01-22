@@ -8,6 +8,7 @@ using DG.Tweening;
 public class AttackMagnet : MonoBehaviour
 {
     [SerializeField] private Enemy enemyPrefab;
+    [SerializeField] private AddHP AddHPPrefab;
     [SerializeField] private Actor.Actor actor;
 
     public float countDownMax = 5f;
@@ -34,12 +35,7 @@ public class AttackMagnet : MonoBehaviour
             MovePot += transform.localPosition.x;
             MovePot = Mathf.Clamp(MovePot, -MaxX, MaxX);
 
-            AddHPIndex--;
-            if(AddHPIndex <= 0)
-            {
-                print("發射補血子彈");
-                AddHPIndex = Random.Range(5, 10);
-            }
+            
             yield return transform.DOLocalMoveX(MovePot, MoveTime).SetEase(Ease.Linear).WaitForCompletion();
         }
     }
@@ -50,20 +46,30 @@ public class AttackMagnet : MonoBehaviour
         {
             yield return new WaitForSeconds(countDownMax);
             
-            //var ables = actor.GetCurrentAttackableComponentList();
-            //var able = ables[Random.Range(0, ables.Count)];
             var obj = actor.GethealthObject();
             if (obj != null)
             {
                 Enemy enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-                int randomPole = Random.Range(0, 2);
-                enemy.SetMagneticPole(randomPole > 0 ? MagneticPole.North : MagneticPole.South);
+                enemy.magneticPole = Random.Range(0, 2) > 0 ? MagneticPole.North : MagneticPole.South;
                 enemy.End_Act += () => {
-                    print($"擊中{obj.Index}號物件");
-                    obj.Open = false;
-                    Destroy(enemy.gameObject);
+                    if(obj.Open)
+                    {
+                        print($"擊中{obj.Index}號物件");
+                        obj.Open = false;
+                        Destroy(enemy.gameObject);
+                    }
                 };
                 enemy.Move(obj.Index, obj.transform.position);
+
+                AddHPIndex--;
+                if (AddHPIndex <= 0)
+                {
+                    print("發射補血子彈");
+                    AddHP addHP = Instantiate(AddHPPrefab, transform.position, Quaternion.identity);
+                    addHP.magneticPole = Random.Range(0, 2) > 0 ? MagneticPole.North : MagneticPole.South;
+                    addHP.Move(obj.Index, obj.transform.position);
+                    AddHPIndex = Random.Range(5, 10);
+                }
             }
             yield return null;
         }

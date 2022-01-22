@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Magnet;
+using UnityEngine;
 
 // ReSharper disable All
 
@@ -15,22 +16,37 @@ namespace Actor
 
         public void OnTriggerEnter(Collider other)
         {
-            var enemy = other.gameObject.GetComponent<Enemy>();
-            if (enemy == null) return;
-            var enemyPole = enemy.magneticPole;
-            var canBeatenActor = _actor.CanBeaten(enemyPole);
-            if (canBeatenActor)
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
             {
-                _actor.GethealthObject().Open = false;
+                MagneticPole enemyPole = enemy.magneticPole;
+                bool canBeatenActor = _actor.CanBeaten(enemyPole);
+                if (canBeatenActor)
+                {
+                    _actor.GethealthObject().Open = false;
+                }
+                else
+                {
+                    // 產生反擊子彈
+                    print("反擊");
+                    //var bossPosition = enemy.StartPosition;
+                    //enemy.Move(1, bossPosition);
+                }
+                Destroy(enemy.gameObject);
+                return;
             }
-            else
+
+            AddHP addHp = other.GetComponent<AddHP>();
+            if (addHp != null)
             {
-                // 產生反擊子彈
-                print("反擊");
-                //var bossPosition = enemy.StartPosition;
-                //enemy.Move(1, bossPosition);
+                if (_actor._currentMagneticPole != addHp.magneticPole)
+                {
+                    HealthObject healthObject = _actor.GethealthObject(false);
+                    if (healthObject != null) healthObject.Open = true;
+                }
+                Destroy(addHp.gameObject);
+                return;
             }
-            Destroy(enemy.gameObject);
         }
     }
 }
