@@ -45,8 +45,7 @@ namespace Actor
         private void Start()
         {
             _moveSpeed = defaultMoveSpeed;
-            _currentMagneticPole = defaultMagneticPole;
-            //SwitchMagneticPole();
+            currentMagneticPole = defaultMagneticPole;
         }
 
         private void Update()

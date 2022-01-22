@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Magnet;
 
 namespace Actor
 {
@@ -25,7 +26,7 @@ namespace Actor
             var canSwitchMagnetPole = Input.GetKeyDown(KeyCode.Space);
             if (canSwitchMagnetPole)
             {
-                _actor.SwitchMagneticPole();
+                _actor.currentMagneticPole = _actor.currentMagneticPole == MagneticPole.North ? MagneticPole.South : MagneticPole.North;
             }
         }
     }
