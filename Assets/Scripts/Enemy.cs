@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
 
     public Vector3 StartPosition { get; private set; }
 
+    const float MoveTime = 2;
+
     public void Start()
     {
         StartPosition = transform.position;
@@ -34,24 +36,24 @@ public class Enemy : MonoBehaviour
         {
             if (Index == 0)
             {
-                transform.DOMoveZ(EndV3.z, 1);
-                transform.DOMoveY(EndV3.y, 1);
-                yield return transform.DOMoveX(EndV3.x - 2f, 0.5f).WaitForCompletion();
-                transform.DOMoveX(EndV3.x, 0.5f);
+                transform.DOMoveZ(EndV3.z, MoveTime);
+                transform.DOMoveY(EndV3.y, MoveTime);
+                yield return transform.DOMoveX(EndV3.x - 2f, MoveTime * 0.5f).WaitForCompletion();
+                transform.DOMoveX(EndV3.x, MoveTime * 0.5f);
             }
             else if (Index == 1)
             {
-                transform.DOMoveX(EndV3.x, 1);
-                transform.DOMoveZ(EndV3.z, 1);
-                yield return transform.DOMoveY(EndV3.y + 0.1f, 0.3f).WaitForCompletion();
-                transform.DOMoveY(EndV3.y, 0.7f);
+                transform.DOMoveX(EndV3.x, MoveTime);
+                transform.DOMoveZ(EndV3.z, MoveTime);
+                yield return transform.DOMoveY(EndV3.y + 0.1f, MoveTime * 0.3f).WaitForCompletion();
+                transform.DOMoveY(EndV3.y, MoveTime * 0.7f);
             }
             else
             {
-                transform.DOMoveZ(EndV3.z, 1);
-                transform.DOMoveY(EndV3.y, 1);
-                yield return transform.DOMoveX(EndV3.x + 2f, 0.5f).WaitForCompletion();
-                transform.DOMoveX(EndV3.x, 0.5f);
+                transform.DOMoveZ(EndV3.z, MoveTime);
+                transform.DOMoveY(EndV3.y, MoveTime);
+                yield return transform.DOMoveX(EndV3.x + 2f, MoveTime * 0.5f).WaitForCompletion();
+                transform.DOMoveX(EndV3.x, MoveTime * 0.5f);
             }
         }
     }

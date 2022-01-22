@@ -32,10 +32,19 @@ namespace Actor
 
         public void Move(float horizontal)
         {
-            var currentVelocity = _rigidbody.velocity;
-            var movementOffsetX = horizontal * _moveSpeed;
-            var nextVelocity = new Vector2(movementOffsetX, currentVelocity.y);
-            _rigidbody.velocity = nextVelocity;
+            print(horizontal);
+            if (horizontal > 0)
+            {
+                transform.position = transform.position + new Vector3(1, 0, 0) * _moveSpeed * Time.deltaTime;
+            }
+            else if (horizontal < 0)
+            {
+                transform.position = transform.position + new Vector3(-1, 0, 0) * _moveSpeed * Time.deltaTime;
+            }
+            //var currentVelocity = _rigidbody.velocity;
+            //var movementOffsetX = horizontal * _moveSpeed;
+            //var nextVelocity = new Vector2(movementOffsetX, currentVelocity.y);
+            //_rigidbody.velocity = nextVelocity;
         }
 
         public void ModifyMoveSpeed(float amount)
