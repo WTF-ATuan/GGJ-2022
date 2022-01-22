@@ -7,6 +7,7 @@ public class StartMenu : MonoBehaviour
 {
     public Transform TextUI;
     public Transform Kr;
+    public Transform Kr_ef;
     public Transform Pl;
 
     Vector2 StartTextUI_Pot;
