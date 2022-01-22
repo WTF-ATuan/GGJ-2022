@@ -760,8 +760,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5fae9e3c9a00c547b00fe3c3d3dd35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMagnetManagerMax: 0
-  enemyMagnet: {fileID: 4867362768108665765, guid: 83b5db48627e074438da83cdb22ad00a, type: 3}
+  enemyMagnet:
+    enemyMagnetPrefab: {fileID: 4867362768108665765, guid: 83b5db48627e074438da83cdb22ad00a, type: 3}
+    enemyMagnetObj: {fileID: 0}
+    rigidbody2D: {fileID: 0}
+    isBeTrigger: 0
+    m_MagneticPole: 0
   countDownMax: 1
 --- !u!4 &1683286343
 Transform:
