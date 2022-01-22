@@ -10,9 +10,6 @@ public class AttackMagnet : MonoBehaviour
     [SerializeField] private Enemy enemyPrefab;
     [SerializeField] private Actor.Actor actor;
 
-
-    private List<Enemy> _enemyList = new List<Enemy>();
-
     public float countDownMax = 5f;
 
     public float MaxX = 20;
@@ -45,8 +42,9 @@ public class AttackMagnet : MonoBehaviour
             var enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
             var randomPole = Random.Range(0, 2);
             enemy.SetMagneticPole(randomPole > 0 ? MagneticPole.North : MagneticPole.South);
-            var randomTrack = Random.Range(0, 3);
-            enemy.Move(randomTrack, actor.transform.position);
+            var ables = actor.GetCurrentAttackableComponentList();
+            var able = ables[Random.Range(0, ables.Count)];
+            enemy.Move(able.AttackbleIndex, able.ComponentObject.transform.position);
             yield return null;
         }
     }
