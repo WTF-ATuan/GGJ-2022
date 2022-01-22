@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 1605648}
   - component: {fileID: 1605652}
   - component: {fileID: 1605651}
+  - component: {fileID: 1605653}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -158,6 +159,7 @@ MonoBehaviour:
   defaultMoveSpeed: 5
   defaultMagneticPole: 0
   defaultHealth: 3
+  healthObjects: []
 --- !u!212 &1605649
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -256,6 +258,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4535c07a34294ea5b312f79ff0a5cf21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1605653
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605647}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.019243255, y: -0.010522902}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 35.079998, y: 24.802656}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5385355, y: 0.36015123}
+  m_EdgeRadius: 0
 --- !u!1 &224437618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,12 +1586,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5fae9e3c9a00c547b00fe3c3d3dd35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMagnet:
-    enemyMagnetPrefab: {fileID: 4867362768108665765, guid: 83b5db48627e074438da83cdb22ad00a, type: 3}
-    enemyMagnetObj: {fileID: 0}
-    rigidbody2D: {fileID: 0}
-    isBeTrigger: 0
-    m_MagneticPole: 0
+  enemyPrefab: {fileID: 4401286760911670589, guid: 3bb58448cc7f1bf47a5146343531076e, type: 3}
+  actor: {fileID: 1605648}
   countDownMax: 1
 --- !u!4 &1683286343
 Transform:
