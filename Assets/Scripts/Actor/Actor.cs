@@ -1,3 +1,5 @@
+using System;
+using Extra;
 using Magnet;
 using UnityEngine;
 
@@ -13,6 +15,9 @@ namespace Actor
         private Rigidbody2D _rigidbody2D;
         private MagneticPole _currentMagneticPole;
         private int _health;
+
+
+        public readonly DomainEvent actorDead = new DomainEvent();
 
         private void Start()
         {
@@ -45,10 +50,9 @@ namespace Actor
         public void Beaten()
         {
             _health -= 1;
-            if (_health <= 0)
-            {
-                Debug.Log("Actor Die");
-            }
+            if (_health > 0) return;
+            Debug.Log("Actor Die");
+            actorDead.InvokeEvent();
         }
     }
 }
