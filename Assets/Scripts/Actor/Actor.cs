@@ -72,25 +72,24 @@ namespace Actor
         }
 
         // ReSharper disable once IdentifierTypo
-        public AttackableComponent GetCurrentAttackableComponent()
+        public List<AttackableComponent> GetCurrentAttackableComponentList()
         {
-            var healthIndex = 0;
-            var healPosition = Vector3.zero;
+            var components = new List<AttackableComponent>();
+
             for (var index = 0; index < healthObjects.Count; index++)
             {
                 var healthObject = healthObjects[index];
                 if (healthObject == null) continue;
-                healthIndex = index;
-                healPosition = healthObject.transform.position;
-                break;
+                var healthIndex = index;
+                var component = new AttackableComponent
+                {
+                    AttackbleIndex = healthIndex,
+                    ComponentObject = healthObject
+                };
+                components.Add(component);
             }
 
-            var component = new AttackableComponent
-            {
-                AttackbleIndex = healthIndex,
-                ComponentPosition = healPosition
-            };
-            return component;
+            return components;
         }
     }
 }

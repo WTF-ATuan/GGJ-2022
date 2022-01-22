@@ -6,7 +6,7 @@ namespace Actor
     public class AttackableComponent
     {
         public int AttackbleIndex { get; set; }
-        public Vector3 ComponentPosition { get; set; }
+        public GameObject ComponentObject { get; set; }
 
     }
 }
