@@ -11,9 +11,19 @@ namespace Actor
             _actor = GetComponent<Actor>();
         }
 
-        public void OnCollisionEnter2D(Collision2D other)
+        public void OnTriggerEnter2D(Collider2D other)
         {
-
+            var enemy = other.gameObject.GetComponent<EnemyMagnet>();
+            var enemyPole = enemy.m_MagneticPole;
+            var canBeatenActor = _actor.CanBeaten(enemyPole);
+            if (canBeatenActor)
+            {
+                _actor.Beaten();
+            }
+            else
+            {
+                enemy.FightBack();
+            }
         }
     }
 }

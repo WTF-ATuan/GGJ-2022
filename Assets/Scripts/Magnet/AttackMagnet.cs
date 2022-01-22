@@ -65,4 +65,9 @@ public class EnemyMagnet
 
     //·í«eºÏ·¥
     public Magnet.MagneticPole m_MagneticPole;
+
+    public void FightBack()
+    {
+        Debug.Log("Fight back");
+    }
 }
