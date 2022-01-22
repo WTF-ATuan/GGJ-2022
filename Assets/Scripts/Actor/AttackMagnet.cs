@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class AttackMagnet : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private GameObject enemyMagnet;
+    private Vector2 boundary;
+
+    public int enemyMagnetManagerMax;
+    public int enemyMagnetManager;
+
     void Start()
     {
         
@@ -15,4 +20,5 @@ public class AttackMagnet : MonoBehaviour
     {
         
     }
+
 }
