@@ -15,7 +15,12 @@ namespace Actor
         private void Update()
         {
             var horizontalValue = Input.GetAxis("Horizontal");
+            var canSwitchMagnetPole = Input.GetKeyDown(KeyCode.Space);
             _actor.Move(horizontalValue);
+            if (canSwitchMagnetPole)
+            {
+                _actor.SwitchMagneticPole();
+            }
         }
     }
 }

@@ -32,15 +32,14 @@ namespace Actor
 
         public void ModifyMoveSpeed(float amount)
         {
-            if(amount < 0 || amount > 100) return;
+            if (amount < 0 || amount > 100) return;
             _moveSpeed += amount;
         }
 
-        public void SwitchMagneticPole(MagneticPole magneticPole)
+        public void SwitchMagneticPole()
         {
-            var isSame = _currentMagneticPole == magneticPole;
-            if (isSame) return;
-            _currentMagneticPole = magneticPole;
+            var isNorth = _currentMagneticPole == MagneticPole.North;
+            _currentMagneticPole = isNorth ? MagneticPole.South : MagneticPole.North;
         }
 
         public void Beaten()
