@@ -47,10 +47,10 @@ namespace Actor
             _currentMagneticPole = isNorth ? MagneticPole.South : MagneticPole.North;
         }
 
-        public bool CanAttack(MagneticPole magneticPole)
+        public bool CanBeaten(MagneticPole magneticPole)
         {
             var isSame = _currentMagneticPole == magneticPole;
-            return isSame;
+            return !isSame;
         }
 
         public void Beaten()
