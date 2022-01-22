@@ -3,26 +3,38 @@ using System.Collections.Generic;
 using Magnet;
 using UnityEngine;
 using UnityEngine.Serialization;
+using DG.Tweening;
 
 public class AttackMagnet : MonoBehaviour
 {
     [SerializeField] private Enemy enemyPrefab;
     [SerializeField] private Actor.Actor actor;
 
-    //private bool IsNeedCallEnemy
-    //{
-    //    get => _countDown == 0f;
-    //}
 
     private List<Enemy> _enemyList = new List<Enemy>();
 
     public float countDownMax = 5f;
-    //private float _countDown = 0f;
 
+    public float MaxX = 20;
+    public float MinMove = 2;
+    public float MaxMove = 10;
 
     private void Start()
     {
         StartCoroutine(CallEnemy());
+        StartCoroutine(Move()); 
+    }
+
+    IEnumerator Move()
+    {
+        for(; ; )
+        {
+            float MoveTime = Random.Range(0.5f, 1f);
+            float MovePot = Random.Range(MinMove, MaxMove) * (Random.Range(0, 2) == 0 ? 1 : -1);
+            MovePot += transform.localPosition.x;
+            MovePot = Mathf.Clamp(MovePot, -MaxX, MaxX);
+            yield return transform.DOLocalMoveX(MovePot, MoveTime).SetEase(Ease.Linear).WaitForCompletion();
+        }
     }
 
     private IEnumerator CallEnemy()
@@ -30,10 +42,7 @@ public class AttackMagnet : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(countDownMax);
-            //yield return new WaitUntil(() => IsNeedCallEnemy);
-            var randomRangeY = Random.Range(-5f, 5f);
-            var enemy = Instantiate(enemyPrefab, transform.position + Vector3.right * randomRangeY,
-                Quaternion.identity);
+            var enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
             var randomPole = Random.Range(0, 2);
             enemy.SetMagneticPole(randomPole > 0 ? MagneticPole.North : MagneticPole.South);
             var randomTrack = Random.Range(0, 3);
@@ -41,14 +50,4 @@ public class AttackMagnet : MonoBehaviour
             yield return null;
         }
     }
-
-    //private void Update()
-    //{
-    //    _countDown += CalculateCountDown();
-    //}
-
-    //private float CalculateCountDown()
-    //{
-    //    return countDownMax >= _countDown ? Time.deltaTime : -_countDown;
-    //}
 }
