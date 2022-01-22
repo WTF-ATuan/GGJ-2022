@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
         get => _magneticPole;
         set
         {
+            // ========改變磁極的特效寫這邊=========
             var spriteRender = GetComponent<SpriteRenderer>();
             spriteRender.color = value == MagneticPole.North ? Color.red : Color.blue;
             _magneticPole = value;

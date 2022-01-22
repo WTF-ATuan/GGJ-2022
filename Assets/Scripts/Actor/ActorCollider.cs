@@ -29,6 +29,7 @@ namespace Actor
                 {
                     // 產生反擊子彈
                     Enemy_Backtrack enemy_Backtrack = Instantiate(AttackMagnet._.enemy_Backtrack, enemy.transform.position, Quaternion.identity);
+                    enemy_Backtrack.magneticPole = enemy.magneticPole;
                     enemy_Backtrack.End_Act += () => {
                         AttackMagnet._.HP--;
                         Destroy(enemy_Backtrack.gameObject);

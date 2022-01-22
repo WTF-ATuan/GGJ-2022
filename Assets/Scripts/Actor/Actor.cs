@@ -14,7 +14,17 @@ namespace Actor
         public List<HealthObject> healthObjects;
 
         private float _moveSpeed;
-        private Rigidbody _rigidbody;
+        public MagneticPole currentMagneticPole
+        {
+            get => _currentMagneticPole;
+            set
+            {
+                // ========改變磁極的特效寫這邊=========
+                var spriteRender = GetComponent<SpriteRenderer>();
+                spriteRender.color = value == MagneticPole.North ? Color.red : Color.blue;
+                _currentMagneticPole = value;
+            }
+        }
         public MagneticPole _currentMagneticPole;
         public int health
         {
@@ -34,10 +44,9 @@ namespace Actor
 
         private void Start()
         {
-            _rigidbody = GetComponent<Rigidbody>();
             _moveSpeed = defaultMoveSpeed;
             _currentMagneticPole = defaultMagneticPole;
-            SwitchMagneticPole();
+            //SwitchMagneticPole();
         }
 
         private void Update()
@@ -75,13 +84,13 @@ namespace Actor
             _moveSpeed += amount;
         }
 
-        public void SwitchMagneticPole()
-        {
-            var isNorth = _currentMagneticPole == MagneticPole.North;
-            _currentMagneticPole = isNorth ? MagneticPole.South : MagneticPole.North;
-            var spriteRender = GetComponent<SpriteRenderer>();
-            spriteRender.color = isNorth ? Color.blue : Color.red;
-        }
+        //public void SwitchMagneticPole()
+        //{
+        //    var isNorth = _currentMagneticPole == MagneticPole.North;
+        //    _currentMagneticPole = isNorth ? MagneticPole.South : MagneticPole.North;
+        //    var spriteRender = GetComponent<SpriteRenderer>();
+        //    spriteRender.color = isNorth ? Color.blue : Color.red;
+        //}
 
         public bool CanBeaten(MagneticPole magneticPole)
         {
