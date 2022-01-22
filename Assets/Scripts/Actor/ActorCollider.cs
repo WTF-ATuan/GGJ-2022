@@ -4,7 +4,7 @@
 
 namespace Actor
 {
-    public class ActorCollider2D : MonoBehaviour
+    public class ActorCollider : MonoBehaviour
     {
         private Actor _actor;
 
@@ -13,7 +13,7 @@ namespace Actor
             _actor = GetComponent<Actor>();
         }
 
-        public void OnTriggerEnter2D(Collider2D other)
+        public void OnTriggerEnter(Collider other)
         {
             var enemy = other.gameObject.GetComponent<Enemy>();
             if (enemy == null) return;
