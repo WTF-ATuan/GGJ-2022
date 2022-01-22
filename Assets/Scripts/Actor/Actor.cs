@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Extra;
 using Magnet;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace Actor
         [SerializeField] private float defaultMoveSpeed = 5;
         [SerializeField] private MagneticPole defaultMagneticPole = MagneticPole.North;
         [SerializeField] private int defaultHealth = 3;
+        [SerializeField] private List<GameObject> healthObjects;
 
         private float _moveSpeed;
         private Rigidbody2D _rigidbody2D;
@@ -60,6 +62,26 @@ namespace Actor
             if (_health > 0) return;
             Debug.Log("Actor Die");
             actorDead.InvokeEvent();
+        }
+
+        // ReSharper disable once IdentifierTypo
+        public AttackableComponent GetCurrentAttackableComponent()
+        {
+            var healthIndex = 0;
+            var healPosition = Vector3.zero;
+            for (var index = 0; index < healthObjects.Count; index++)
+            {
+                var healthObject = healthObjects[index];
+                if (healthObject == null) continue;
+                healthIndex = index;
+                healPosition = healthObject.transform.position;
+                break;
+            }
+
+            var component = new AttackableComponent();
+            component.AttackbleIndex = healthIndex;
+            component.ComponentPosition = healPosition;
+            return component;
         }
     }
 }

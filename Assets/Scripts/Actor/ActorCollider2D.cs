@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+// ReSharper disable All
+
 namespace Actor
 {
     public class ActorCollider2D : MonoBehaviour
@@ -13,8 +15,9 @@ namespace Actor
 
         public void OnTriggerEnter2D(Collider2D other)
         {
-            var enemy = other.gameObject.GetComponent<EnemyMagnet>();
-            var enemyPole = enemy.m_MagneticPole;
+            var enemy = other.gameObject.GetComponent<Enemy>();
+            if (enemy == null) return;
+            var enemyPole = enemy.magneticPole;
             var canBeatenActor = _actor.CanBeaten(enemyPole);
             if (canBeatenActor)
             {
@@ -22,7 +25,10 @@ namespace Actor
             }
             else
             {
-                enemy.FightBack();
+                var component = _actor.GetCurrentAttackableComponent();
+                var index = component.AttackbleIndex;
+                var endPosition = component.ComponentPosition;
+                enemy.Move(index, endPosition);
             }
         }
     }
