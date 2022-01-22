@@ -80,10 +80,9 @@ namespace Actor
             {
                 var healthObject = healthObjects[index];
                 if (healthObject == null) continue;
-                var healthIndex = index;
                 var component = new AttackableComponent
                 {
-                    AttackbleIndex = healthIndex,
+                    AttackbleIndex = index,
                     ComponentObject = healthObject
                 };
                 components.Add(component);
