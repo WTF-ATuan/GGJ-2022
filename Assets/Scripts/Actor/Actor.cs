@@ -1,4 +1,3 @@
-using System;
 using Magnet;
 using UnityEngine;
 
@@ -23,7 +22,7 @@ namespace Actor
             _health = defaultHealth;
         }
 
-        public void Movement(float horizontal)
+        public void Move(float horizontal)
         {
             var currentVelocity = _rigidbody2D.velocity;
             var movementOffsetX = horizontal * _moveSpeed;
