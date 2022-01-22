@@ -27,6 +27,7 @@ namespace Actor
             _moveSpeed = defaultMoveSpeed;
             _currentMagneticPole = defaultMagneticPole;
             _health = defaultHealth;
+            SwitchMagneticPole();
         }
 
         public void Move(float horizontal)

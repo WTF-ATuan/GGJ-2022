@@ -8,7 +8,6 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
     public MagneticPole magneticPole;
-    public int EndIndex;
 
     public Vector3 StartPosition { get; private set; }
 
@@ -17,12 +16,20 @@ public class Enemy : MonoBehaviour
         StartPosition = transform.position;
     }
 
+    public void SetMagneticPole(MagneticPole pole)
+    {
+        magneticPole = pole;
+        var spriteRender = GetComponent<SpriteRenderer>();
+        spriteRender.color = pole == MagneticPole.North ? Color.red : Color.blue;
+    }
+
     /// <summary>
     /// 移動到某個終點（Index=終點編號 EndV3=終點座標）
     /// </summary>
-    public void Move (int Index, Vector3 EndV3)
+    public void Move(int Index, Vector3 EndV3)
     {
         StartCoroutine(_());
+
         IEnumerator _()
         {
             if (Index == 0)
