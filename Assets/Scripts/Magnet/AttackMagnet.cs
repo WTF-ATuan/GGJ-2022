@@ -81,7 +81,7 @@ public class AttackMagnet : MonoBehaviour
                 enemy.End_Act += () => {
                     if(obj.Open)
                     {
-                        print($"擊中{obj.Index}號物件");
+                        //print($"擊中{obj.Index}號物件");
                         obj.Open = false;
                         Destroy(enemy.gameObject);
                     }
@@ -91,10 +91,16 @@ public class AttackMagnet : MonoBehaviour
                 AddHPIndex--;
                 if (AddHPIndex <= 0)
                 {
-                    print("發射補血子彈");
                     AddHP addHP = Instantiate(AddHPPrefab, transform.position, Quaternion.identity);
                     addHP.magneticPole = Random.Range(0, 2) > 0 ? MagneticPole.North : MagneticPole.South;
                     addHP.Move(obj.Index, obj.transform.position);
+                    addHP.End_Act += () => {
+                        if (obj.Open)
+                        {
+                            Destroy(enemy.gameObject);
+                        }
+                    };
+
                     AddHPIndex = Random.Range(5, 10);
                 }
             }
