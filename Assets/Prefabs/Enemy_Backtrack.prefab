@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4401286760911670588}
   - component: {fileID: 4401286760911670591}
   - component: {fileID: 7752728460811871241}
-  - component: {fileID: 4401286760911670589}
+  - component: {fileID: -7851564322284921428}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy_Backtrack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.32
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4401286760911670589
+--- !u!114 &-7851564322284921428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,8 +106,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4401286760911670590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5a28a182cd5043be80434cc207e4236, type: 3}
+  m_Script: {fileID: 11500000, guid: b91c0155af8994ef4b68794711f0b761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _magneticPole: 0
-  MoveTime: 4

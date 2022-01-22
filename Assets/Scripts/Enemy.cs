@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
 
     public Vector3 StartPosition { get; private set; }
 
-    const float MoveTime = 4;
+    public float MoveTime = 4;
 
     public Action End_Act;
 

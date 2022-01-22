@@ -109,3 +109,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef0663cbbcbc41818222125a1952a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _magneticPole: 0
+  MoveTime: 10

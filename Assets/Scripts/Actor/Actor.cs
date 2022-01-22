@@ -37,7 +37,6 @@ namespace Actor
             _rigidbody = GetComponent<Rigidbody>();
             _moveSpeed = defaultMoveSpeed;
             _currentMagneticPole = defaultMagneticPole;
-            //_health = defaultHealth;
             SwitchMagneticPole();
         }
 

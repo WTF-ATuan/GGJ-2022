@@ -28,9 +28,12 @@ namespace Actor
                 else
                 {
                     // 產生反擊子彈
-                    print("反擊");
-                    //var bossPosition = enemy.StartPosition;
-                    //enemy.Move(1, bossPosition);
+                    Enemy_Backtrack enemy_Backtrack = Instantiate(AttackMagnet._.enemy_Backtrack, enemy.transform.position, Quaternion.identity);
+                    enemy_Backtrack.End_Act += () => {
+                        AttackMagnet._.HP--;
+                        Destroy(enemy_Backtrack.gameObject);
+                    };
+                    enemy_Backtrack.Move(AttackMagnet._.transform);
                 }
                 Destroy(enemy.gameObject);
                 return;

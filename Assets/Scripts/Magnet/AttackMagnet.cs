@@ -4,11 +4,31 @@ using Magnet;
 using UnityEngine;
 using UnityEngine.Serialization;
 using DG.Tweening;
+using Extra;
 
 public class AttackMagnet : MonoBehaviour
 {
-    [SerializeField] private Enemy enemyPrefab;
-    [SerializeField] private AddHP AddHPPrefab;
+    // 單例
+    public static AttackMagnet _;
+
+    public int HP
+    {
+        get => _HP;
+        set
+        {
+            _HP = value;
+            if (value <= 0)
+            {
+                print("Boss死亡");
+                BossDead.InvokeEvent();
+            }
+        }
+    }
+    public int _HP = 10;
+
+    public Enemy enemyPrefab;
+    public AddHP AddHPPrefab;
+    public Enemy_Backtrack enemy_Backtrack;
     [SerializeField] private Actor.Actor actor;
 
     public float countDownMax = 5f;
@@ -19,6 +39,13 @@ public class AttackMagnet : MonoBehaviour
 
     /// <summary> 下次發射補血子彈的時間 </summary>
     public int AddHPIndex;
+
+    public readonly DomainEvent BossDead = new DomainEvent();
+
+    private void Awake()
+    {
+        _ = this;
+    }
 
     private void Start()
     {

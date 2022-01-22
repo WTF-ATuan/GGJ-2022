@@ -13,14 +13,14 @@ public class AddHP : MonoBehaviour
         set
         {
             var spriteRender = GetComponent<SpriteRenderer>();
-            print(spriteRender != null);
+            //print(spriteRender != null);
             spriteRender.color = value == MagneticPole.North ? Color.red : Color.blue;
             _magneticPole = value;
         }
     }
     public MagneticPole _magneticPole;
 
-    const float MoveTime = 8;
+    public float MoveTime = 8;
 
     public Action End_Act;
 
@@ -33,17 +33,6 @@ public class AddHP : MonoBehaviour
 
         IEnumerator _()
         {
-            //  寫錯了這是給反擊用的移動
-            //Vector3 StartV3 = transform.position;
-            //float f = 0;
-            //f += 1f / MoveTime * Time.deltaTime;
-            //for(; ; )
-            //{
-            //    Vector3.Lerp(StartV3, EndObj.position, f);
-            //    if (f >= 1) break;
-            //    yield return null;
-            //}
-
             if (Index == 0)
             {
                 transform.DOMoveZ(EndV3.z, MoveTime);
