@@ -25,10 +25,7 @@ namespace Actor
             }
             else
             {
-                var component = _actor.GetCurrentAttackableComponent();
-                var index = component.AttackbleIndex;
-                var endPosition = component.ComponentPosition;
-                enemy.Move(index, endPosition);
+
             }
         }
     }

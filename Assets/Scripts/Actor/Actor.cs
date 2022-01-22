@@ -59,6 +59,14 @@ namespace Actor
         public void Beaten()
         {
             _health -= 1;
+            for (var i = 0; i < healthObjects.Count; i++)
+            {
+                var healthObject = healthObjects[i];
+                if (healthObject != null)
+                {
+                    healthObject.SetActive(false);
+                }
+            }
             if (_health > 0) return;
             Debug.Log("Actor Die");
             actorDead.InvokeEvent();
@@ -78,9 +86,11 @@ namespace Actor
                 break;
             }
 
-            var component = new AttackableComponent();
-            component.AttackbleIndex = healthIndex;
-            component.ComponentPosition = healPosition;
+            var component = new AttackableComponent
+            {
+                AttackbleIndex = healthIndex,
+                ComponentPosition = healPosition
+            };
             return component;
         }
     }
