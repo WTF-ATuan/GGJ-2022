@@ -16,6 +16,9 @@ public class AttackMagnet : MonoBehaviour
     public float MinMove = 2;
     public float MaxMove = 10;
 
+    /// <summary> 下次發射補血子彈的時間 </summary>
+    public int AddHPIndex;
+
     private void Start()
     {
         StartCoroutine(CallEnemy());
@@ -30,6 +33,13 @@ public class AttackMagnet : MonoBehaviour
             float MovePot = Random.Range(MinMove, MaxMove) * (Random.Range(0, 2) == 0 ? 1 : -1);
             MovePot += transform.localPosition.x;
             MovePot = Mathf.Clamp(MovePot, -MaxX, MaxX);
+
+            AddHPIndex--;
+            if(AddHPIndex <= 0)
+            {
+                print("發射補血子彈");
+                AddHPIndex = Random.Range(5, 10);
+            }
             yield return transform.DOLocalMoveX(MovePot, MoveTime).SetEase(Ease.Linear).WaitForCompletion();
         }
     }

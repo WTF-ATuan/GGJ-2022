@@ -21,13 +21,16 @@ namespace Actor
             var canBeatenActor = _actor.CanBeaten(enemyPole);
             if (canBeatenActor)
             {
-                //_actor.Beaten();
+                _actor.GethealthObject().Open = false;
             }
             else
             {
-                var bossPosition = enemy.StartPosition;
-                enemy.Move(1, bossPosition);
+                // 產生反擊子彈
+                print("反擊");
+                //var bossPosition = enemy.StartPosition;
+                //enemy.Move(1, bossPosition);
             }
+            Destroy(enemy.gameObject);
         }
     }
 }
