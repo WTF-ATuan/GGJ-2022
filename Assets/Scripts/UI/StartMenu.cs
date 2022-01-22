@@ -9,6 +9,7 @@ public class StartMenu : MonoBehaviour
     public Transform Kr;
     public Transform Kr_ef;
     public Transform Pl;
+    public Transform Pl_ef;
 
     Vector2 StartTextUI_Pot;
     float StartKr_R;
@@ -27,6 +28,8 @@ public class StartMenu : MonoBehaviour
     private void Update()
     {
         TextUI.localPosition = StartTextUI_Pot + new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f));
+        Kr_ef.localPosition = new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f));
+        Pl_ef.localPosition = new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f));
     }
 
     public IEnumerator KrMove()
