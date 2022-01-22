@@ -17,7 +17,7 @@ namespace Actor
         {
             var enemy = other.gameObject.GetComponent<Enemy>();
             if (enemy == null) return;
-            var enemyPole = enemy.magneticPole;
+            var enemyPole = enemy.MagneticPole;
             var canBeatenActor = _actor.CanBeaten(enemyPole);
             if (canBeatenActor)
             {
