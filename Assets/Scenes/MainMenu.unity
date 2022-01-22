@@ -605,6 +605,12 @@ MonoBehaviour:
   - {fileID: 1834478491}
   - {fileID: 594474578}
   - {fileID: 170879741}
+  bossImage: {fileID: 2061874143}
+  boss01Sprite: {fileID: 21300000, guid: 22f9b7cb91d7d074ba062911b3918051, type: 3}
+  boss02Sprite: {fileID: 21300000, guid: fb3d6e434d7283e428c45b9a77fe2e2e, type: 3}
+  boss03Sprite: {fileID: 21300000, guid: 7aa7fee2fc078c6438766776e1e6e930, type: 3}
+  minChangeTime: 0.1
+  maxChangeTime: 3
 --- !u!1 &360061288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1492,7 +1498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &653899422
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1541,6 +1547,12 @@ MonoBehaviour:
   - {fileID: 184975890}
   - {fileID: 2094825511}
   - {fileID: 2106358621}
+  bossImage: {fileID: 768137418}
+  boss01Sprite: {fileID: 21300000, guid: 22f9b7cb91d7d074ba062911b3918051, type: 3}
+  boss02Sprite: {fileID: 21300000, guid: fb3d6e434d7283e428c45b9a77fe2e2e, type: 3}
+  boss03Sprite: {fileID: 21300000, guid: 7aa7fee2fc078c6438766776e1e6e930, type: 3}
+  minChangeTime: 0.1
+  maxChangeTime: 3
 --- !u!1 &768137416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,7 +1610,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7aa7fee2fc078c6438766776e1e6e930, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 22f9b7cb91d7d074ba062911b3918051, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3826,7 +3838,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7aa7fee2fc078c6438766776e1e6e930, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 22f9b7cb91d7d074ba062911b3918051, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
