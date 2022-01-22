@@ -9,15 +9,15 @@ public class AttackMagnet : MonoBehaviour
     [SerializeField] private Enemy enemyPrefab;
     [SerializeField] private Actor.Actor actor;
 
-    private bool IsNeedCallEnemy
-    {
-        get => _countDown == 0f;
-    }
+    //private bool IsNeedCallEnemy
+    //{
+    //    get => _countDown == 0f;
+    //}
 
     private List<Enemy> _enemyList = new List<Enemy>();
 
     public float countDownMax = 5f;
-    private float _countDown = 0f;
+    //private float _countDown = 0f;
 
 
     private void Start()
@@ -29,7 +29,8 @@ public class AttackMagnet : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitUntil(() => IsNeedCallEnemy);
+            yield return new WaitForSeconds(countDownMax);
+            //yield return new WaitUntil(() => IsNeedCallEnemy);
             var randomRangeY = Random.Range(-5f, 5f);
             var enemy = Instantiate(enemyPrefab, transform.position + Vector3.right * randomRangeY,
                 Quaternion.identity);
@@ -41,13 +42,13 @@ public class AttackMagnet : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        _countDown += CalculateCountDown();
-    }
+    //private void Update()
+    //{
+    //    _countDown += CalculateCountDown();
+    //}
 
-    private float CalculateCountDown()
-    {
-        return countDownMax >= _countDown ? Time.deltaTime : -_countDown;
-    }
+    //private float CalculateCountDown()
+    //{
+    //    return countDownMax >= _countDown ? Time.deltaTime : -_countDown;
+    //}
 }
