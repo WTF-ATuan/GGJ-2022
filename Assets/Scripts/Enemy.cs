@@ -1,3 +1,4 @@
+using System;
 using Extra;
 using Magnet;
 using UnityEngine;
@@ -8,6 +9,13 @@ public class Enemy : MonoBehaviour
 {
     public MagneticPole magneticPole;
     public int EndIndex;
+
+    public Vector3 StartPosition { get; private set; }
+
+    public void Start()
+    {
+        StartPosition = transform.position;
+    }
 
     /// <summary>
     /// 移動到某個終點（Index=終點編號 EndV3=終點座標）

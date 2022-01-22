@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Extra;
 using Magnet;
 using UnityEngine;
@@ -59,14 +60,11 @@ namespace Actor
         public void Beaten()
         {
             _health -= 1;
-            for (var i = 0; i < healthObjects.Count; i++)
+            foreach (var healthObject in healthObjects.Where(healthObject => healthObject != null))
             {
-                var healthObject = healthObjects[i];
-                if (healthObject != null)
-                {
-                    healthObject.SetActive(false);
-                }
+                healthObject.SetActive(false);
             }
+
             if (_health > 0) return;
             Debug.Log("Actor Die");
             actorDead.InvokeEvent();

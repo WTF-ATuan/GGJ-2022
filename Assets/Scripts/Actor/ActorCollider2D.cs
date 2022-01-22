@@ -25,7 +25,8 @@ namespace Actor
             }
             else
             {
-
+                var bossPosition = enemy.StartPosition;
+                enemy.Move(1, bossPosition);
             }
         }
     }
