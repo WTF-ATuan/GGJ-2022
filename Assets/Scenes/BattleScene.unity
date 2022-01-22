@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -157,13 +157,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629aa22b96ebf15478febf6d5e631ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMoveSpeed: 5
+  defaultMoveSpeed: 10
   defaultMagneticPole: 0
   defaultHealth: 3
   healthObjects:
-  - {fileID: 2012632629}
-  - {fileID: 1682595404}
-  - {fileID: 1930329018}
+  - {fileID: 2012632632}
+  - {fileID: 1930329021}
+  - {fileID: 1682595407}
 --- !u!212 &1605649
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -266,7 +266,7 @@ SphereCollider:
   m_GameObject: {fileID: 1605647}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 2.2302117
   m_Center: {x: 0, y: 0, z: 0}
@@ -1484,6 +1484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1682595405}
   - component: {fileID: 1682595406}
+  - component: {fileID: 1682595407}
   m_Layer: 0
   m_Name: pl2 (1)
   m_TagString: Untagged
@@ -1503,7 +1504,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1875093075}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1682595406
 SpriteRenderer:
@@ -1556,6 +1557,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1682595407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682595404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a0c8ed9bb5248ad82c4eb358e03bc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Index: 2
+  Open: 1
 --- !u!1 &1683286341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,7 +1818,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1875093075}
   m_Layer: 0
-  m_Name: Attackables
+  m_Name: healthObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1820,9 +1835,9 @@ Transform:
   m_LocalPosition: {x: 0, y: -2.8, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2012632630}
   - {fileID: 1930329019}
   - {fileID: 1682595405}
-  - {fileID: 2012632630}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1836,6 +1851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1930329019}
   - component: {fileID: 1930329020}
+  - component: {fileID: 1930329021}
   m_Layer: 0
   m_Name: pl2
   m_TagString: Untagged
@@ -1855,7 +1871,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1875093075}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1930329020
 SpriteRenderer:
@@ -1908,6 +1924,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1930329021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930329018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a0c8ed9bb5248ad82c4eb358e03bc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Index: 1
+  Open: 1
 --- !u!1 &2012632629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,6 +1948,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2012632630}
   - component: {fileID: 2012632631}
+  - component: {fileID: 2012632632}
   m_Layer: 0
   m_Name: pl2 (2)
   m_TagString: Untagged
@@ -1937,7 +1968,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1875093075}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2012632631
 SpriteRenderer:
@@ -1990,3 +2021,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2012632632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012632629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a0c8ed9bb5248ad82c4eb358e03bc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Index: 0
+  Open: 1

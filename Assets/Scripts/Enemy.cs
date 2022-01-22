@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
 
     const float MoveTime = 2;
 
+    public Action End_Act;
+
     public void Start()
     {
         StartPosition = transform.position;
@@ -39,22 +41,23 @@ public class Enemy : MonoBehaviour
                 transform.DOMoveZ(EndV3.z, MoveTime);
                 transform.DOMoveY(EndV3.y, MoveTime);
                 yield return transform.DOMoveX(EndV3.x - 2f, MoveTime * 0.5f).WaitForCompletion();
-                transform.DOMoveX(EndV3.x, MoveTime * 0.5f);
+                yield return transform.DOMoveX(EndV3.x, MoveTime * 0.5f).WaitForCompletion();
             }
             else if (Index == 1)
             {
                 transform.DOMoveX(EndV3.x, MoveTime);
                 transform.DOMoveZ(EndV3.z, MoveTime);
                 yield return transform.DOMoveY(EndV3.y + 0.1f, MoveTime * 0.3f).WaitForCompletion();
-                transform.DOMoveY(EndV3.y, MoveTime * 0.7f);
+                yield return transform.DOMoveY(EndV3.y, MoveTime * 0.7f).WaitForCompletion();
             }
             else
             {
                 transform.DOMoveZ(EndV3.z, MoveTime);
                 transform.DOMoveY(EndV3.y, MoveTime);
                 yield return transform.DOMoveX(EndV3.x + 2f, MoveTime * 0.5f).WaitForCompletion();
-                transform.DOMoveX(EndV3.x, MoveTime * 0.5f);
+                yield return transform.DOMoveX(EndV3.x, MoveTime * 0.5f).WaitForCompletion();
             }
+            End_Act?.Invoke();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Actor
         [SerializeField] private float defaultMoveSpeed = 5;
         [SerializeField] private MagneticPole defaultMagneticPole = MagneticPole.North;
         [SerializeField] private int defaultHealth = 3;
-        [SerializeField] private List<GameObject> healthObjects;
+        [SerializeField] private List<HealthObject> healthObjects;
 
         private float _moveSpeed;
         private Rigidbody _rigidbody;
@@ -32,7 +32,6 @@ namespace Actor
 
         public void Move(float horizontal)
         {
-            print(horizontal);
             if (horizontal > 0)
             {
                 transform.position = transform.position + new Vector3(1, 0, 0) * _moveSpeed * Time.deltaTime;
@@ -72,7 +71,7 @@ namespace Actor
             _health -= 1;
             foreach (var healthObject in healthObjects.Where(healthObject => healthObject != null))
             {
-                healthObject.SetActive(false);
+                healthObject.gameObject.SetActive(false);
             }
 
             if (_health > 0) return;
@@ -80,24 +79,36 @@ namespace Actor
             actorDead.InvokeEvent();
         }
 
-        // ReSharper disable once IdentifierTypo
-        public List<AttackableComponent> GetCurrentAttackableComponentList()
+        /// <summary>
+        /// 取得一個生命物件（能選擇是活的還死的）
+        /// </summary>
+        public HealthObject GethealthObject(bool GetOpen = true)
         {
-            var components = new List<AttackableComponent>();
 
-            for (var index = 0; index < healthObjects.Count; index++)
-            {
-                var healthObject = healthObjects[index];
-                if (healthObject == null) continue;
-                var component = new AttackableComponent
-                {
-                    AttackbleIndex = index,
-                    ComponentObject = healthObject
-                };
-                components.Add(component);
-            }
-
-            return components;
+            List<HealthObject> Objs = healthObjects.FindAll(x => x.Open == GetOpen);
+            if (Objs == null || Objs.Count <= 0) return null;
+            return Objs[Random.Range(0, Objs.Count)];
         }
+
+        //// ReSharper disable once IdentifierTypo
+        //public List<AttackableComponent> GetCurrentAttackableComponentList()
+        //{
+        //    var components = new List<AttackableComponent>();
+
+        //    for (var index = 0; index < healthObjects.Count; index++)
+        //    {
+        //        var healthObject = healthObjects[index];
+        //        if (healthObject == null) continue;
+        //        var healthIndex = index;
+        //        var component = new AttackableComponent
+        //        {
+        //            AttackbleIndex = healthIndex,
+        //            ComponentObject = healthObject.gameObject;
+        //        };
+        //        components.Add(component);
+        //    }
+
+        //    return components;
+        //}
     }
 }

@@ -39,12 +39,22 @@ public class AttackMagnet : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(countDownMax);
-            var enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-            var randomPole = Random.Range(0, 2);
-            enemy.SetMagneticPole(randomPole > 0 ? MagneticPole.North : MagneticPole.South);
-            var ables = actor.GetCurrentAttackableComponentList();
-            var able = ables[Random.Range(0, ables.Count)];
-            enemy.Move(able.AttackbleIndex, able.ComponentObject.transform.position);
+            
+            //var ables = actor.GetCurrentAttackableComponentList();
+            //var able = ables[Random.Range(0, ables.Count)];
+            var obj = actor.GethealthObject();
+            if (obj != null)
+            {
+                Enemy enemy = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+                int randomPole = Random.Range(0, 2);
+                enemy.SetMagneticPole(randomPole > 0 ? MagneticPole.North : MagneticPole.South);
+                enemy.End_Act += () => {
+                    print($"擊中{obj.Index}號物件");
+                    obj.Open = false;
+                    Destroy(enemy.gameObject);
+                };
+                enemy.Move(obj.Index, obj.transform.position);
+            }
             yield return null;
         }
     }
