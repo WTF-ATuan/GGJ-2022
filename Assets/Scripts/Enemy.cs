@@ -7,17 +7,20 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    public MagneticPole MagneticPole
-    {
-        get => MagneticPole;
-        set => GetComponent<SpriteRenderer>().color = value == MagneticPole.North ? Color.red : Color.blue;
-    }
+    public MagneticPole magneticPole;
 
     public Vector3 StartPosition { get; private set; }
 
     public void Start()
     {
         StartPosition = transform.position;
+    }
+
+    public void SetMagneticPole(MagneticPole pole)
+    {
+        magneticPole = pole;
+        var spriteRender = GetComponent<SpriteRenderer>();
+        spriteRender.color = pole == MagneticPole.North ? Color.red : Color.blue;
     }
 
     /// <summary>

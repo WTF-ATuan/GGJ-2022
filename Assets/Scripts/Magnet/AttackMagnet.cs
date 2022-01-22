@@ -34,7 +34,7 @@ public class AttackMagnet : MonoBehaviour
             var enemy = Instantiate(enemyPrefab, transform.position + Vector3.right * randomRangeY,
                 Quaternion.identity);
             var randomPole = Random.Range(0, 1);
-            enemy.MagneticPole = randomPole == 0 ? MagneticPole.North : MagneticPole.South;
+            enemy.SetMagneticPole(randomPole == 0 ? MagneticPole.North : MagneticPole.South);
             var randomTrack = Random.Range(0, 2);
             enemy.Move(randomTrack, actor.transform.position);
             yield return null;
