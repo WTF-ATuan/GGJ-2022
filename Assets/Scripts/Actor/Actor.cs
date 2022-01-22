@@ -44,6 +44,8 @@ namespace Actor
         {
             var isNorth = _currentMagneticPole == MagneticPole.North;
             _currentMagneticPole = isNorth ? MagneticPole.South : MagneticPole.North;
+            var spriteRender = GetComponent<SpriteRenderer>();
+            spriteRender.color = isNorth ? Color.blue : Color.red;
         }
 
         public bool CanBeaten(MagneticPole magneticPole)
