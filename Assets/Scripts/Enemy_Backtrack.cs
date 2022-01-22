@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Enemy_Backtrack : MonoBehaviour
 {
+    public Sprite blueSprite, redSprite;
     public MagneticPole magneticPole
     {
         get => _magneticPole;
@@ -13,7 +14,7 @@ public class Enemy_Backtrack : MonoBehaviour
         {
             // ========改變磁極的特效寫這邊=========
             var spriteRender = GetComponent<SpriteRenderer>();
-            spriteRender.color = value == MagneticPole.North ? Color.red : Color.blue;
+            spriteRender.sprite = value == MagneticPole.North ? blueSprite : redSprite;
             _magneticPole = value;
         }
     }

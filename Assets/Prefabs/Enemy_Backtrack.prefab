@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4401286760911670590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 7.78, z: 18.79}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e70a053d4d55245479a45f81bab95248, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55959bef41047b54f831c4e28259d628, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +95,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.32
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-7851564322284921428
 MonoBehaviour:
@@ -109,3 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91c0155af8994ef4b68794711f0b761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blueSprite: {fileID: 21300000, guid: 55959bef41047b54f831c4e28259d628, type: 3}
+  redSprite: {fileID: 21300000, guid: aec1b573a1fcab9468a8f3a9b81ce2b3, type: 3}
+  _magneticPole: 0
+  MoveTime: 1
