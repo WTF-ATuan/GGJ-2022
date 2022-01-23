@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 public class StartGameIntroduction : MonoBehaviour
 {
     public Transform[] TextUIs;
     Vector2[] StartTextUI_Pots;
 
     //Boss image change
-    public Image bossImage;
+    public SpriteRenderer bossImage;
     public Sprite boss01Sprite, boss02Sprite, boss03Sprite;
     public float minChangeTime = 0.1f, maxChangeTime = 3f;
-    
+    public float shakePower = 5f;
     void Start()
     {
         StartTextUI_Pots = new Vector2[TextUIs.Length];
@@ -37,6 +36,6 @@ public class StartGameIntroduction : MonoBehaviour
     void Update()
     {
         for (int i = 0; i < TextUIs.Length; i++)
-            TextUIs[i].localPosition = StartTextUI_Pots[i] + new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f));
+            TextUIs[i].localPosition = StartTextUI_Pots[i] + new Vector2(Random.Range(-shakePower, shakePower), Random.Range(-shakePower, shakePower));
     }
 }

@@ -109,7 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91c0155af8994ef4b68794711f0b761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueSprite: {fileID: 21300000, guid: 55959bef41047b54f831c4e28259d628, type: 3}
-  redSprite: {fileID: 21300000, guid: aec1b573a1fcab9468a8f3a9b81ce2b3, type: 3}
+  blueSprite01: {fileID: 21300000, guid: 582809fc315bbd340b47ffe0eba55dbf, type: 3}
+  blueSprite02: {fileID: 21300000, guid: 55959bef41047b54f831c4e28259d628, type: 3}
+  redSprite01: {fileID: 21300000, guid: 410043fabf1088144a0ea0f832bd66a7, type: 3}
+  redSprite02: {fileID: 21300000, guid: aec1b573a1fcab9468a8f3a9b81ce2b3, type: 3}
   _magneticPole: 0
   MoveTime: 1
