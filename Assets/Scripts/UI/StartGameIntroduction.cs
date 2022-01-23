@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
+
 public class StartGameIntroduction : MonoBehaviour
 {
     public Transform[] TextUIs;
     Vector2[] StartTextUI_Pots;
 
     //Boss image change
-    public SpriteRenderer bossImage;
+    public Image bossImage;
     public Sprite boss01Sprite, boss02Sprite, boss03Sprite;
     public float minChangeTime = 0.1f, maxChangeTime = 3f;
     public float shakePower = 5f;
@@ -30,6 +33,16 @@ public class StartGameIntroduction : MonoBehaviour
                 bossImage.sprite = boss02Sprite;
                 yield return new WaitForSeconds(0.15f);
                 bossImage.sprite = boss01Sprite;
+            }
+        }
+        StartCoroutine(IE_BossHandFly());
+        IEnumerator IE_BossHandFly()
+        {
+            Vector2 startv2 = bossImage.transform.localPosition;
+            for(; ; )
+            {
+                yield return bossImage.transform.DOLocalMoveY(startv2.y + 50, 5f).WaitForCompletion();
+                yield return bossImage.transform.DOLocalMoveY(startv2.y, 5f).WaitForCompletion();
             }
         }
     }
