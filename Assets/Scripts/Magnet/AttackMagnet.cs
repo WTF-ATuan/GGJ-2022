@@ -11,20 +11,34 @@ public class AttackMagnet : MonoBehaviour
     // 單例
     public static AttackMagnet _;
 
-    public int HP
+    public int HP_S
     {
-        get => _HP;
+        get => _HP_S;
         set
         {
-            _HP = value;
-            if (value <= 0)
+            _HP_S = value;
+            if (_HP_S <= 0 && _HP_N <= 0)
             {
                 print("Boss死亡");
                 BossDead.InvokeEvent();
             }
         }
     }
-    public int _HP = 10;
+    public int _HP_S;
+    public int HP_N
+    {
+        get => _HP_N;
+        set
+        {
+            _HP_N = value;
+            if (_HP_S <= 0 && _HP_N <= 0)
+            {
+                print("Boss死亡");
+                BossDead.InvokeEvent();
+            }
+        }
+    }
+    public int _HP_N;
 
     public Enemy enemyPrefab;
     public AddHP AddHPPrefab;

@@ -5,10 +5,32 @@ using UnityEngine.UI;
 
 public class BattleUI : MonoBehaviour
 {
-    public Text BossHP;
+    public GameObject[] HP_N;
+    public GameObject[] HP_S;
 
     void Update()
     {
-        BossHP.text = $"Boss HP:{AttackMagnet._.HP}";
+        for(int i = 0; i < HP_N.Length; i++)
+        {
+            if (i < AttackMagnet._.HP_N)
+            {
+                HP_N[i].SetActive(true);
+            }
+            else
+            {
+                HP_N[i].SetActive(false);
+            }
+        }
+        for (int i = 0; i < HP_S.Length; i++)
+        {
+            if (i < AttackMagnet._.HP_S)
+            {
+                HP_S[i].SetActive(true);
+            }
+            else
+            {
+                HP_S[i].SetActive(false);
+            }
+        }
     }
 }
