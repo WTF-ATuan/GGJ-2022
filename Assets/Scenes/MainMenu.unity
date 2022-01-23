@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1881,6 +1881,8 @@ MonoBehaviour:
   - {fileID: 2094825511}
   - {fileID: 2106358621}
   bossImage: {fileID: 768137418}
+  RedStom: {fileID: 1762875831}
+  BuleStom: {fileID: 515876815}
   boss01Sprite: {fileID: 21300000, guid: 22f9b7cb91d7d074ba062911b3918051, type: 3}
   boss02Sprite: {fileID: 21300000, guid: fb3d6e434d7283e428c45b9a77fe2e2e, type: 3}
   boss03Sprite: {fileID: 21300000, guid: 7aa7fee2fc078c6438766776e1e6e930, type: 3}
