@@ -54,8 +54,8 @@ public class StartGameIntroduction : MonoBehaviour
             Vector2 startv2 = bossImage.transform.localPosition;
             for (; ; )
             {
-                yield return RedStom.transform.DOLocalMoveY(startv2.y + 40, 4f).WaitForCompletion();
-                yield return RedStom.transform.DOLocalMoveY(startv2.y - 40, 4f).WaitForCompletion();
+                yield return RedStom.transform.DOLocalMoveY(startv2.y, 4f).WaitForCompletion();
+                yield return RedStom.transform.DOLocalMoveY(startv2.y - 80, 4f).WaitForCompletion();
             }
         }
         StartCoroutine(IE_BlueStomFly());
@@ -64,8 +64,8 @@ public class StartGameIntroduction : MonoBehaviour
             Vector2 startv2 = bossImage.transform.localPosition;
             for (; ; )
             {
-                yield return BuleStom.transform.DOLocalMoveY(startv2.y - 40, 4f).WaitForCompletion();
-                yield return BuleStom.transform.DOLocalMoveY(startv2.y + 40, 4f).WaitForCompletion();
+                yield return BuleStom.transform.DOLocalMoveY(startv2.y - 80, 4f).WaitForCompletion();
+                yield return BuleStom.transform.DOLocalMoveY(startv2.y, 4f).WaitForCompletion();
             }
         }
     }
