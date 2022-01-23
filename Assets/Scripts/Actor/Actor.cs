@@ -13,6 +13,9 @@ namespace Actor
         public List<HealthObject> healthObjects;
 
         private Animator m_animator;
+        [SerializeField] private Sprite[] backpack_Sprites, n_Sprites, s_Sprites;
+        [SerializeField] SpriteRenderer NowBackpack_Sprite, NowMagnetic;
+
         // 衝擊波爆出來的位置
         public Transform C;
         public Actor_C CPref;
@@ -67,6 +70,18 @@ namespace Actor
                     actorDead.InvokeEvent();
                 }
             }
+
+            //改變背包上的磁極 (硬A
+            Sprite nowSprite = null;
+            for (int i = 0; i < backpack_Sprites.Length; i++)
+            {
+                if (NowBackpack_Sprite.sprite == backpack_Sprites[i])
+                {
+                    nowSprite = currentMagneticPole == MagneticPole.North ? n_Sprites[i] : s_Sprites[i];
+                    break;
+                }
+            }                
+            NowMagnetic.sprite = nowSprite;
         }
 
         public void Move(float horizontal)
