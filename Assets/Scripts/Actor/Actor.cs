@@ -10,10 +10,12 @@ namespace Actor
     {
         [SerializeField] private float defaultMoveSpeed = 5;
         [SerializeField] public MagneticPole defaultMagneticPole = MagneticPole.North;
-        [SerializeField] private int defaultHealth = 3;
         public List<HealthObject> healthObjects;
 
         private Animator m_animator;
+        // 衝擊波爆出來的位置
+        public Transform C;
+        public Actor_C CPref;
         private float _moveSpeed;
         public MagneticPole currentMagneticPole
         {
@@ -77,10 +79,11 @@ namespace Actor
             {
                 transform.position = transform.position + new Vector3(-1, 0, 0) * _moveSpeed * Time.deltaTime;
             }
-            //var currentVelocity = _rigidbody.velocity;
-            //var movementOffsetX = horizontal * _moveSpeed;
-            //var nextVelocity = new Vector2(movementOffsetX, currentVelocity.y);
-            //_rigidbody.velocity = nextVelocity;
+        }
+
+        public void Sp_C(MagneticPole m)
+        {
+            Instantiate<Actor_C>(CPref, C.transform.position, Quaternion.identity, C).Open(m);
         }
 
         public void ModifyMoveSpeed(float amount)
@@ -89,32 +92,11 @@ namespace Actor
             _moveSpeed += amount;
         }
 
-        //public void SwitchMagneticPole()
-        //{
-        //    var isNorth = _currentMagneticPole == MagneticPole.North;
-        //    _currentMagneticPole = isNorth ? MagneticPole.South : MagneticPole.North;
-        //    var spriteRender = GetComponent<SpriteRenderer>();
-        //    spriteRender.color = isNorth ? Color.blue : Color.red;
-        //}
-
         public bool CanBeaten(MagneticPole magneticPole)
         {
             var isSame = _currentMagneticPole == magneticPole;
             return !isSame;
         }
-
-        //public void Beaten()
-        //{
-        //    //_health -= 1;
-        //    foreach (var healthObject in healthObjects.Where(healthObject => healthObject != null))
-        //    {
-        //        healthObject.gameObject.SetActive(false);
-        //    }
-
-        //    if (health > 0) return;
-        //    Debug.Log("Actor Die");
-        //    actorDead.InvokeEvent();
-        //}
 
         /// <summary>
         /// 取得一個生命物件（能選擇是活的還死的）
@@ -126,26 +108,5 @@ namespace Actor
             if (Objs == null || Objs.Count <= 0) return null;
             return Objs[Random.Range(0, Objs.Count)];
         }
-
-        //// ReSharper disable once IdentifierTypo
-        //public List<AttackableComponent> GetCurrentAttackableComponentList()
-        //{
-        //    var components = new List<AttackableComponent>();
-
-        //    for (var index = 0; index < healthObjects.Count; index++)
-        //    {
-        //        var healthObject = healthObjects[index];
-        //        if (healthObject == null) continue;
-        //        var healthIndex = index;
-        //        var component = new AttackableComponent
-        //        {
-        //            AttackbleIndex = healthIndex,
-        //            ComponentObject = healthObject.gameObject;
-        //        };
-        //        components.Add(component);
-        //    }
-
-        //    return components;
-        //}
     }
 }

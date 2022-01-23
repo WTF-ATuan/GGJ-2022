@@ -27,6 +27,8 @@ namespace Actor
                 }
                 else
                 {
+                    // 產生衝擊波
+                    _actor.Sp_C(enemy.magneticPole);
                     // 產生反擊子彈
                     Enemy_Backtrack enemy_Backtrack = Instantiate(AttackMagnet._.enemy_Backtrack, enemy.transform.position, Quaternion.identity);
                     enemy_Backtrack.magneticPole = enemy.magneticPole;
