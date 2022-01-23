@@ -16,8 +16,8 @@ public class Enemy : MonoBehaviour
             // ========改變磁極的特效寫這邊=========
             var spriteRender = GetComponent<SpriteRenderer>();
 
-            Sprite _sprite01 = value == MagneticPole.North ? blueSprite01 : redSprite01;
-            Sprite _sprite02 = value == MagneticPole.North ? blueSprite02 : redSprite02;
+            Sprite _sprite01 = value == MagneticPole.North ? redSprite01 : blueSprite01;
+            Sprite _sprite02 = value == MagneticPole.North ? redSprite02 : blueSprite02;
             _magneticPole = value;
 
             StartCoroutine(RunChangeSprite(_sprite01, _sprite02, 0.2f));
