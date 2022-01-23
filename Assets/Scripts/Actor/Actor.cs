@@ -35,7 +35,6 @@ namespace Actor
                 foreach(HealthObject i in healthObjects)
                 {
                     if (i.Open) n++;
-                    else m_animator.SetTrigger("Hit");
                 }
                 return n;
             }
@@ -53,8 +52,12 @@ namespace Actor
 
         private void Update()
         {
-            if(_health != health)
+            if (_health != health)
             {
+                if (_health > health)
+                {
+                    m_animator.SetTrigger("Hit");
+                }
                 _health = health;
                 if(_health <= 0)
                 {
