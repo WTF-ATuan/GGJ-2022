@@ -27,7 +27,7 @@ namespace Actor
             {
                 // ========改變磁極的特效寫這邊=========
                 var spriteRender = GetComponent<SpriteRenderer>();
-                spriteRender.color = value == MagneticPole.North ? Color.red : Color.blue;
+                //spriteRender.color = value == MagneticPole.North ? Color.red : Color.blue;
                 _currentMagneticPole = value;
             }
         }
