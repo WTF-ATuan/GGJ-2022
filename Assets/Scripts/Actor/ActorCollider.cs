@@ -33,7 +33,14 @@ namespace Actor
                     Enemy_Backtrack enemy_Backtrack = Instantiate(AttackMagnet._.enemy_Backtrack, enemy.transform.position, Quaternion.identity);
                     enemy_Backtrack.magneticPole = enemy.magneticPole;
                     enemy_Backtrack.End_Act += () => {
-                        AttackMagnet._.HP--;
+                        if (enemy.magneticPole == MagneticPole.North)
+                        {
+                            AttackMagnet._.HP_N--;
+                        }
+                        else
+                        {
+                            AttackMagnet._.HP_S--;
+                        }
                         Destroy(enemy_Backtrack.gameObject);
                     };
                     enemy_Backtrack.Move(AttackMagnet._.transform);
