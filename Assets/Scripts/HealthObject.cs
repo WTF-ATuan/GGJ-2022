@@ -14,7 +14,6 @@ public class HealthObject : MonoBehaviour
         set
         {
             // ===========毀壞與修復的特效寫這邊============
-            gameObject.SetActive(value);
             _Open = value;
         }
     }
