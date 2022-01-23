@@ -15,6 +15,7 @@ public class HealthObject : MonoBehaviour
         {
             // ===========毀壞與修復的特效寫這邊============
             _Open = value;
+            m_SpriteRenderer.sprite = _Open ? normalSprite : brokeSprite;
         }
     }
     public bool _Open;
@@ -22,9 +23,5 @@ public class HealthObject : MonoBehaviour
     private void Start()
     {
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
-    }
-    private void Update()
-    {
-        m_SpriteRenderer.sprite = _Open ? normalSprite : brokeSprite;
     }
 }

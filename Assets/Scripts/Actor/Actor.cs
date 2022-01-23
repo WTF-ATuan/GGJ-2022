@@ -13,6 +13,7 @@ namespace Actor
         [SerializeField] private int defaultHealth = 3;
         public List<HealthObject> healthObjects;
 
+        private Animator m_animator;
         private float _moveSpeed;
         public MagneticPole currentMagneticPole
         {
@@ -34,6 +35,7 @@ namespace Actor
                 foreach(HealthObject i in healthObjects)
                 {
                     if (i.Open) n++;
+                    else m_animator.SetTrigger("Hit");
                 }
                 return n;
             }
@@ -46,6 +48,7 @@ namespace Actor
         {
             _moveSpeed = defaultMoveSpeed;
             currentMagneticPole = defaultMagneticPole;
+            m_animator = GetComponent<Animator>();
         }
 
         private void Update()
